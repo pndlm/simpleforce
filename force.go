@@ -48,6 +48,13 @@ type QueryResult struct {
 	Records        []SObject `json:"records"`
 }
 
+type TypedQueryResult[T any] struct {
+	TotalSize      int    `json:"totalSize"`
+	Done           bool   `json:"done"`
+	NextRecordsURL string `json:"nextRecordsUrl"`
+	Records        []T    `json:"records"`
+}
+
 // Expose sid to save in admin settings
 func (client *Client) GetSid() (sid string) {
 	return client.sessionID
